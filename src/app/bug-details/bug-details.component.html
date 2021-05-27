@@ -1,0 +1,58 @@
+<div class="container my-2">
+
+<!--  <div class="d-flex flex-column text-right mb-2 mt-2">-->
+<!--    <div><span class="text-muted">Created:</span> {{ bug.createdAt | date:'short' }}</div>-->
+<!--    <div><span class="text-muted">Updated:</span> {{ bug.updatedAt | date:'short' }}</div>-->
+<!--  </div>-->
+
+  <form *ngIf="form" [formGroup]="form">
+
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" id="title" formControlName="title" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <input type="text" id="description" formControlName="description" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="priority">Priority</label>
+      <select id="priority" formControlName="priority" class="form-control">
+        <option value="0">Choose</option>
+        <option value="1">Minor</option>
+        <option value="2">Major</option>
+        <option value="3">Critical</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="reporter">Reporter</label>
+      <select id="reporter" formControlName="reporter" class="form-control">
+        <option value="">Choose</option>
+        <option value="QA">QA</option>
+        <option value="PO">PO</option>
+        <option value="DEV">DEV</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="status">Status</label>
+      <select id="status" formControlName="status" class="form-control">
+        <option value="">Choose</option>
+        <option value="Ready for testing">Ready for testing</option>
+        <option value="Done">Done</option>
+        <option value="Rejected">Rejected</option>
+      </select>
+    </div>
+
+<!--    <div class="form-group">-->
+<!--      <label for="comments">Comments</label>-->
+<!--      <input id="comments" type="text" formControlName="comments" class="form-control">-->
+<!--    </div>-->
+
+    <button type="submit" class="btn btn-block btn-success">Update</button>
+  </form>
+</div>
+

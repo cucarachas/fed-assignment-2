@@ -1,0 +1,46 @@
+<div class="container my-2">
+  <form [formGroup]="form" (submit)="submit()">
+
+    <div class="form-group">
+      <label for="">Title</label>
+      <input type="text" formControlName="title" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="">Description</label>
+      <input type="text" formControlName="description" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="">Priority</label>
+      <select formControlName="priority" class="form-control">
+        <option value="">Choose</option>
+        <option value="1">Minor</option>
+        <option value="2">Major</option>
+        <option value="3">Critical</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="">Reporter</label>
+      <select formControlName="reporter" class="form-control">
+        <option value="">Choose</option>
+        <option value="QA">QA</option>
+        <option value="PO">PO</option>
+        <option value="DEV">DEV</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="">Status</label>
+      <select formControlName="status" class="form-control">
+        <option value="">Choose</option>
+        <option value="Ready for testing">Ready for testing</option>
+        <option value="Done">Done</option>
+        <option value="Rejected">Rejected</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-block btn-success">Add</button>
+  </form>
+</div>

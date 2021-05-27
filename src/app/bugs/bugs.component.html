@@ -1,0 +1,42 @@
+<div class="container my-2">
+
+  <div class="d-flex justify-content-between align-items-center">
+    <div class="search-wrapper">
+      <input type="text" id="search" class="form-control" placeholder="Search for a bug...">
+    </div>
+    <div class="actions float-right my-2">
+      <a [routerLink]="['bug']" class="btn btn-outline-danger"><i class="fa fa-plus-circle"></i> New bug</a>
+    </div>
+  </div>
+  <div *ngIf="bugs.length" class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th (click)="sort('title')">Title <span  class="float-right" *ngIf="column == 'title'" [innerHTML]="arrows[order]"></span></th>
+        <th (click)="sort('priority')">Priority <span class="float-right" *ngIf="column == 'priority'" [innerHTML]="arrows[order]"></span></th>
+        <th (click)="sort('reporter')">Reporter <span class="float-right" *ngIf="column == 'reporter'" [innerHTML]="arrows[order]"></span></th>
+        <th (click)="sort('createdAt')">Date Created <span class="float-right" *ngIf="column == 'createdAt'" [innerHTML]="arrows[order]"></span></th>
+        <th (click)="sort('status')">Status <span class="float-right" *ngIf="column == 'status'" [innerHTML]="arrows[order]"></span></th>
+        <th class="text-center">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let bug of bugs">
+        <td>{{bug.title}}</td>
+        <td>{{bug.priority}}</td>
+        <td>{{bug.reporter}}</td>
+        <td>{{bug.createdAt | date}}</td>
+        <td>{{bug.status}}</td>
+        <td class="text-center">
+          <a class="btn btn-sm btn-info" [routerLink]="['bug', bug.id]"><i class="fa fa-pencil"></i></a>
+          <button class="btn btn-sm btn-danger ml-2" (click)="delete(bug.id)"><i class="fa fa-times"></i></button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pagination">
+    <button class="btn btn-secondary" *ngIf="page > 0" (click)="previous()">Previous</button>
+    <button class="btn btn-secondary" *ngIf="bugs.length == 10" (click)="next()">Next</button>
+  </div>
+</div>
